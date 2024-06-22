@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>RFID and IOT based attendance system</title>
+   <style>
+      html{background-color:#ffebbb}
+      div{margin:10px}
+      .flow1{background-color:#5585b5;
+         padding:10px;text-align:center;border:10px solid black;
+      }
+      .flow2{background-color:#5585b5;
+         padding:10px;text-align:center;border:10px solid black;
+      }
+      .flow3{background-color:#5585b5;
+         padding:10px;text-align:center;border:10px solid black;
+      }
+      .flow4{background-color:#5585b5;
+         padding:10px;text-align:center;border:10px solid black;
+      }
+      .flow5{background-color:#5585b5;
+         padding:10px;text-align:center;border:10px solid black;
+      }
+      .flow6{background-color:#5585b5;
+         padding:10px;text-align:center;border:10px solid black;
+      }
+      .flow7{background-color:#5585b5;
+         padding:10px;text-align:center;border:10px solid black;
+      }
+      .flow8{background-color:#5585b5;
+         padding:10px;text-align:center;border:10px solid black;
+      }
+      .flow9{background-color:#5585b5;
+         padding:10px;text-align:center;border:10px solid black;
+      }
+      
+   </style>
+</head>
+
+<body>
+<h1>
+   Content
+</h1>
+<ul>
+   <li>Introduction</li>
+   <li>Litrature Review</li>
+   <li>RFID</li>
+   <li>Methodology</li>
+   <li>Block Diagram </li>
+   <li>Flow Chart</li>
+   <li>Results and discussion</li>
+   <li>Conclusion and future work</li>
+</ul>
+<h1>Introduction </h1>
+<ul>
+   <li> In modern organizations, managing attendance efficiently is crucial.
+Traditional methods often fall short, leading to inaccuracies and
+administrative burdens.</li>
+<li>To address these challenges, we're leveraging RFID and IoT
+technologies. RFID tags and IoT connectivity allow for automatic
+attendance tracking, real-time monitoring, and streamlined data
+management.</li>
+<li>This project aims to design, implement, and evaluate an RFID and
+IoT-based smart attendance system, enhancing accuracy and efficiency
+in attendance management processes.</li>
+</ul>
+<h1>Objectives</h1>
+<ul>
+   <li><b>Automated Attendance Tracking:</b> Develop a system capable of automatically
+recording student attendance using RFID tags/cards.</li>
+<li><b>Real-Time Monitoring: </b>Enable real-time monitoring of attendance data for
+administrators and teachers to track student presence.</li>
+<li><b>Parental Notification: </b>Implement SMS notification functionality to inform
+parents/guardians about their child's attendance status.</li>
+<li><b> Data Management:</b> Integrate Google Sheets for centralized data storage and
+easy access to attendance records.</li>
+<li><b>Security and Privacy:</b> Implement security measures to protect student data and
+ensure compliance with privacy regulations.</li>
+</ul>
+<h1>Litrature Review </h1>
+<ul>
+   <li> <b>RFID (Radio Frequency Identification)</b><br>
+RFID (Radio Frequency Identification) technology is a system that uses radio waves to
+transmit data from an RFID tag to a reader, which then processes the information. [1]</li>
+<li><b>IoT integration</b> <br>
+IoT integration refers to the process of incorporating Internet of Things (IoT) devices,
+systems, and technologies into existing infrastructures or applications to enable enhanced
+functionality, automation, and connectivity. When it comes to integrating IoT with RFID
+technology, it typically involves combining RFID tags, readers, and middleware with IoT
+platforms and systems to create smart, connected environments. [3]</li>
+<li> <b>SMS Notification Systems</b><br>
+ SMS (Short Message Service) notification systems in education play a vital role in
+facilitating communication between educational institutions, students, parents, and faculty
+members. These systems enable timely delivery of important information, announcements,
+and updates via text messages. [5]</li>
+<li><b>Integration of Google Sheets for Data Management</b><br>
+Integrating Google Sheets for data management offers a convenient and collaborative
+solution for organizing, analyzing, and sharing data within educational institutions. [7]</li>
+<li> <b>Security and Privacy Considerations</b><br>
+When implementing an RFID and IoT-based attendance system, it's crucial to address
+security and privacy considerations to protect sensitive data and ensure the system's
+integrity. [9]</li>
+   
+</ul>
+<h1>Methodology </h1>
+
+<div class="flow1">
+   Initialization
+</div>
+<div class="flow2">Check connectivity</div>
+<div class="flow3">Scan Student ID 
+Using RFID Tag</div>
+<div class="flow4">Authenticate ID</div>
+<div class="flow5">Mark Attendance 
+and Send 
+Notification to 
+parent</div>
+<div class="flow6">Update Google 
+Sheet</div>
+<div class="flow7">Display Name 
+& Time
+On LCD Display</div>
+<div class="flow8">Repeat process</div>
+<div class="flow9">Shutdown</div>
+<a href="./flowchart.jpg" style="color:#680747">Click here to view flowchart</a>
+<h1>Step by step description of process:</h1>
+<ul>
+   <li><b>Initialisation:</b><br>
+   <ul>
+      <li>Power on the system.</li>
+      <li>Initialize the RFID reader, GSM module, RTC, EEPROM, buzzer, LCD screen, and establish WiFi connectivity.</li>
+   </ul></li>
+   <li><b>Check connectivity:</b>
+   <ul>
+      <li>Ensure that the ESP32 is connected to a WiFi network.</li>
+      <li> If not connected, attempt to establish a connection.</li>
+   </ul></li>
+   <li><b>Read RFID Tag:</b>
+   <ul>
+      <li>Continuously monitor the RFID reader for tag detection.</li>
+      <li>When a tag is detected, read its unique ID.</li>
+      
+   </ul></li>
+   <li><b>Authenticate Tag ID:</b>
+   <ul>
+      <li>Compare the read tag ID with the database of authorized student IDs.</li>
+      <li> If the ID is valid, proceed to mark attendance, send SMS notification to parents, and
+update the Google Sheet.</li>
+<li> If not, display an error message on the LCD screen and sound the buzzer</li>
+   </ul></li>
+   <li><b>Mark Attendance and Send Notification:</b>
+   <ul>
+      <li>Get the current date and time from the RTC.</li>
+      <li>Store the student's ID, date, and time in the EEPROM as attendance records.</li>
+      <li>Trigger an SMS notification to the student's parents using the GSM module, informing
+them about the attendanc</li>
+</ul>
+<li><b>Update Google Sheet:</b>
+<ul>
+   
+   <li>Use Google Sheets API to update the administrator's Google Sheet with the attendance
+information.</li>
+<li>Update the sheet with the student's ID, date, and time of attendance.</li>
+</ul></li>
+<li><b>Display Information:</b>
+<ul>
+   <li> Show relevant information on the LCD screen.</li>
+   <li>Display attendance status, system status, or error messages as needed</li>
+</ul></li>
+<li><b>Repeat process:</b>
+<ul>
+   <li>Continuously loop through steps 3 to 7 to handle multiple tag detections and attendance
+marking.</li>
+</ul></li>
+   <li><b>Shutdown:</b>
+   <ul>
+      <li>Gracefully power off the system if required.</li>
+   </ul></li>
+</ul>
+<h1>System Block Diagram</h1>
+<p>(click on the below image to view fullscren)</p>
+<a href="./block.jpg"><img src="./block.jpg"width=370px; /></a>
+<h1>Components and software:</h1>
+<ul>
+   <li><b>ESP 32 WiFi Module</b></li>
+   <li><b> Reader Module (RFID MFRC522)</b></li>
+   <li><b> RFID Tags/Cards</b></li>
+   <li><b>4G GSM Module</b></li>
+   <li><b>4x20 LCD Screen</b></li>
+   <li><b>DS 1307 Real Time Clock</b></li>
+   <li><b>Arduino Integrated Development Environment (IDE) software</b></li>
+   <li><b>Google sheets API</b></li>
+</ul>
+
+</body>
+
+</html>
